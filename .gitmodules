@@ -1,0 +1,3 @@
+[submodule "pack/local/start/auto-pairs"]
+	path = pack/local/start/auto-pairs
+	url = https://github.com/lunarwatcher/auto-pairs.git
