@@ -24,7 +24,7 @@ syntax enable
 # Displays the highlight group under the cursor.
 # See: https://vim.fandom.com/wiki/Showing_syntax_highlight_group_in_statusline
 def HlGroup(): void
-  var item = synIDattr(synID(line("."), col("."), 1), "name")
+  var item = synIDattr(synID(line('.'), col('.'), 1), 'name')
 
   if empty(item)
     echo 'No highlight group'

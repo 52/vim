@@ -48,7 +48,8 @@
         #@ Package
         vim = package.customize {
           vimrcConfig.customRC = ''
-            set runtimepath^=${self}
+            set runtimepath=${self},$VIMRUNTIME,${self}/after
+            set packpath=${self},$VIMRUNTIME,${self}/after
           '';
         };
       in
