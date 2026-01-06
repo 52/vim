@@ -1,10 +1,13 @@
-""
+" © 2026 Max Karou. All Rights Reserved.
+" Licensed under Apache Version 2.0, or MIT License, at your discretion.
 "
-" SPDX-License-Identifier: MIT
 " Author: Max Karou <maxkarou@protonmail.com>
-" URL: https://github.com/52/vix
+" Source: https://github.com/52/vim
 "
+" Apache License: http://www.apache.org/licenses/LICENSE-2.0
+" MIT License: http://opensource.org/licenses/MIT
 "
+" Usage of this file is permitted solely under a sanctioned license.
 
 if !has('vim9script')
   finish
@@ -33,29 +36,8 @@ set completeopt+=noinsert
 # Disable automatic candidate selection.
 set completeopt+=noselect
 
-# Enable keyword based fuzzy-matching.
-set completefuzzycollect=keyword
-
 # Register the completion sources.
 set complete=.
 
-# Enable command-line completions.
-set wildmenu
-
-# Display completions in a standard popup.
-set wildoptions+=pum
-
-# Enable fuzzy-matching for candidates.
-set wildoptions+=fuzzy
-
-# Enable sane <TAB> usage in the popup.
-set wildmode=noselect:lastused,full
-
 # Limit the number of candidates to n.
 set pumheight=6
-
-augroup VixCmpSetup
-  autocmd!
-  # Trigger the wildmenu on command-line input.
-  autocmd CmdlineChanged [:/\?] call wildtrigger()
-augroup END
