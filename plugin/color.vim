@@ -19,7 +19,7 @@ vim9script
 syntax enable
 
 # Set the colorscheme.
-# colorscheme hades
+colorscheme hades
 
 # Displays the highlight group under the cursor.
 # See: https://vim.fandom.com/wiki/Showing_syntax_highlight_group_in_statusline
