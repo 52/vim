@@ -15,10 +15,17 @@ endif
 
 vim9script
 
+import autoload 'find.vim'
+
 # Disable the command-line window.
 nnoremap q: <nop>
 nnoremap q/ <nop>
 nnoremap q? <nop>
 
-# In a sane world this would not exist.
+# Disable the antiquated Ex mode.
+# In a sane world this wouldn't exist.
 nnoremap Q <nop>
+
+# Define the :Find command to access finder utilities.
+command! -nargs=1 -complete=customlist,find.Complete Find find.Run(<f-args>)
+nnoremap <leader>ff <cmd>Find files<CR>

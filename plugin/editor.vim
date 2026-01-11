@@ -15,111 +15,70 @@ endif
 
 vim9script
 
-# Set the XDG_CACHE_HOME environment variable if not defined.
-# See: https://specifications.freedesktop.org/basedir-spec/latest/
-if empty(getenv('XDG_CACHE_HOME'))
-  setenv('XDG_CACHE_HOME', expand('~/.cache'))
-endif
-
-# Set the XDG_CONFIG_HOME environment variable if not defined.
-# See: https://specifications.freedesktop.org/basedir-spec/latest/
-if empty(getenv('XDG_CONFIG_HOME'))
-  setenv('XDG_CONFIG_HOME', expand('~/.config'))
-endif
-
-# Set the XDG_STATE_HOME environment variable if not defined.
-# See: https://specifications.freedesktop.org/basedir-spec/latest/
-if empty(getenv('XDG_STATE_HOME'))
-  setenv('XDG_STATE_HOME', expand('~/.local/state'))
-endif
-
-# Set the XDG_DATA_HOME environment variable if not defined.
-# See: https://specifications.freedesktop.org/basedir-spec/latest/
-if empty(getenv('XDG_DATA_HOME'))
-  setenv('XDG_DATA_HOME', expand('~/.local/share'))
-endif
-
-# Enable filetype, plugins and indentation.
 filetype plugin indent on
+syntax enable
 
-# Automatically reload files changed outside of vim.
-set autoread
-
-# Configure the leader key.
 g:mapleader = ','
 g:maplocalleader = ','
 
-# Enable absolute line numbers.
 set number
-
-# Enable relative line numbers.
 set relativenumber
-
-# Enable the cursorline.
 set cursorline
+set nowrap
 
-# Disable the signcolumn.
-set signcolumn=no
+set autoindent
 
-# Configure search behaviour.
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch
-
-# Configure tabs and indentation.
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-# Disable automatic line wrapping.
-set nowrap
-
-# Enable automatic indentation.
-set autoindent
-
-# Keep 10 lines visible above and below cursor.
-set scrolloff=10
-
-# Split windows to the right and below.
-set splitright
-set splitbelow
-
-# Disable folding behaviours.
-set nofoldenable
-set foldmethod=manual
-set foldlevelstart=99
-
-# Configure editing behaviour.
 set backspace=indent,eol,start
 set iskeyword+=-
 
-# Enable automatic persistance files.
+set hlsearch
+set incsearch
+set smartcase
+set ignorecase
+
+set foldmethod=manual
+set foldlevelstart=10
+set foldnestmax=10
+set foldcolumn=1
+
+set completepopup=highlight:Pmenu
+set completeopt=menuone,popup,fuzzy,noinsert,noselect
+set pumwidth=32
+set pumheight=8
+
+set laststatus=2
+&statusline = ' %t %m%=%y '
+
+set splitright
+set splitbelow
+
+set scrolloff=20
+
 set backup
 set swapfile
 set undofile
 set undolevels=10000
 set undoreload=10000
 
-# Configure XDG-compliant file locations.
-set viminfofile=$XDG_DATA_HOME/vim/viminfo
-set backupdir=$XDG_DATA_HOME/vim/backup// | mkdir(&backupdir, 'p')
-set directory=$XDG_DATA_HOME/vim/swap//   | mkdir(&directory, 'p')
-set undodir=$XDG_DATA_HOME/vim/undo//     | mkdir(&undodir, 'p')
-set viewdir=$XDG_DATA_HOME/vim/view//     | mkdir(&viewdir, 'p')
-
-# Improve performance and timing.
 set lazyredraw
 set updatetime=100
 set timeoutlen=500
 
-# Configure sane diff mode options.
 set diffopt+=iwhite
 set diffopt+=indent-heuristic
 set diffopt+=algorithm:histogram
 
-# Configure the system clipboard.
+set autoread
+
+g:netrw_banner = 0
+g:netrw_mousemaps = 0
+g:netrw_dirhistmax = 0
+
 if has('clipboard')
   set clipboard=unnamed
 

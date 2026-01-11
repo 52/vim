@@ -15,46 +15,44 @@ endif
 
 vim9script
 
-# Enable syntax highlighting.
-syntax enable
+colorscheme foot
 
-# Set the colorscheme.
-colorscheme hades
-
-# Displays the highlight group under the cursor.
+# Print the highlight group under the cursor.
 # See: https://vim.fandom.com/wiki/Showing_syntax_highlight_group_in_statusline
 def HlGroup(): void
-  var item = synIDattr(synID(line('.'), col('.'), 1), 'name')
+  const synid = synID(line('.'), col('.'), 1)
+  const name = synIDattr(synid, 'name')
 
-  if empty(item)
-    echo 'No highlight group'
+  if empty(name)
+    echohl WarningMsg | echo 'No highlight group' | echohl None
     return
   endif
 
-  echo item
+  echo 'Group: ' .. name
 enddef
 
-
-# Displays a trace of the highlight group under the cursor.
+# Print the highlight group chain under the cursor.
 # See: http://vim.wikia.com/wiki/VimTip99
 def HlTrace(): void
-  var item = synIDattr(synID(line('.'), col('.'), 1), 'name')
-  var trans = synIDattr(synID(line('.'), col('.'), 0), 'name')
-  var link = synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+  const synid = synID(line('.'), col('.'), 1)
+  const name = synIDattr(synid, 'name')
 
-  if empty(item)
-    echo 'No highlight group'
+  if empty(name)
+    echohl WarningMsg | echo 'No highlight group' | echohl None
     return
   endif
 
-  if item !=# trans
-    echo item .. ' (transparent: ' .. trans .. ') -> ' .. link
-  elseif item !=# link
-    echo item .. ' -> ' .. link
+  const trans = synIDattr(synID(line('.'), col('.'), 0), 'name')
+  const link = synIDattr(synIDtrans(synid), 'name')
+
+  if name !=# trans
+    echo printf('HlTrace: %s -> %s -> %s', name, trans, link)
+  elseif name !=# link
+    echo printf('HlTrace: %s -> %s', name, link)
   else
-    echo item
+    echo 'Trace: ' .. name
   endif
 enddef
 
-command! HlGroup call HlGroup()
-command! HlTrace call HlTrace()
+command! HlGroup HlGroup()
+command! HlTrace HlTrace()
