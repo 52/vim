@@ -1,0 +1,14 @@
+[submodule "vendor/auto-pairs"]
+	path = vendor/auto-pairs
+  url = https://github.com/lunarwatcher/auto-pairs.git
+  ignore = dirty
+
+[submodule "vendor/vim-fugitive"]
+	path = vendor/vim-fugitive
+  url = https://github.com/tpope/vim-fugitive.git
+  ignore = dirty
+
+[submodule "vendor/vim-surround"]
+	path = vendor/vim-surround
+  url = https://github.com/tpope/vim-surround.git
+  ignore = dirty
