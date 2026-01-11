@@ -22,9 +22,12 @@ g:mapleader = ','
 g:maplocalleader = ','
 
 set number
-set relativenumber
 set cursorline
+set relativenumber
 set nowrap
+
+autocmd WinEnter * set cursorline
+autocmd WinLeave * set nocursorline
 
 set autoindent
 
