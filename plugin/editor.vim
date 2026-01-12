@@ -79,6 +79,8 @@ set diffopt+=algorithm:histogram
 
 set autoread
 
+set shortmess+=I
+
 g:netrw_banner = 0
 g:netrw_mousemaps = 0
 g:netrw_dirhistmax = 0
