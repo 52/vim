@@ -24,11 +24,36 @@ export def Files(): void
   var items: list<string>
 
   if executable('fd')
-    items = systemlist('fd -tf -H -E .git 2>/dev/null')
+    items = systemlist('fd -tf -H 2>/dev/null')
   elseif executable('find')
-    items = systemlist('find . -type f -not -path "*/.git/*" 2>/dev/null')
+    items = systemlist('find . -type f 2>/dev/null')
   else 
     items = glob('**/*', false, true)
+  endif
+
+  var i = insel.Insel.new(items, {}, {
+    "\<CR>": (i) => {
+      const item = i.Item()
+      i.Close()
+
+      if !empty(item)
+        execute('edit ' .. fnameescape(item))
+      endif
+      }
+  })
+
+  i.Open()
+enddef
+
+# Interactive file finder using INSEL (git-aware).
+# Lists tracked and untracked files while respecting .gitignore.
+export def GFiles(): void
+  var items: list<string>
+
+  if executable('git')
+    items = systemlist('git ls-files -co --exclude-standard 2>/dev/null')
+  elseif executable('fd')
+    items = systemlist('fd -tf -H -E .git 2>/dev/null')
   endif
 
   var i = insel.Insel.new(items, {}, {
@@ -48,7 +73,8 @@ enddef
 # Dictionary mapping command identifiers to their implementation.
 # Used by the Run() function to dispatch commands dynamically.
 const REGISTRY: dict<func(): void> = {
-  files: Files,
+  'files': Files,
+  'git_files': GFiles,
 }
 
 # Generates completion candidates for the :Find command.
