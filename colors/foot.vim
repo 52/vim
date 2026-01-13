@@ -28,6 +28,19 @@ endif
 g:colors_name = "foot"
 set background=dark
 
+if $TERM =~# 'foot'
+  &t_AU = "\e[58:5:%dm"
+
+  &t_Us = "\e[4:2m"
+  &t_Cs = "\e[4:3m"
+  &t_ds = "\e[4:4m"
+  &t_Ds = "\e[4:5m"
+  &t_Ce = "\e[4:0m"
+
+  &t_Ts = "\e[9m"
+  &t_Te = "\e[29m"
+endif
+
 ############ USER-INTERFACE ############
 
 highlight Normal ctermbg=NONE ctermfg=NONE
@@ -41,10 +54,10 @@ highlight Visual    ctermbg=8 ctermfg=NONE cterm=NONE
 highlight VisualNOS ctermbg=8 ctermfg=NONE cterm=NONE
 
 highlight Search    ctermbg=8 ctermfg=NONE
-highlight CurSearch ctermbg=8 ctermfg=NONE cterm=bold,underline
-highlight IncSearch ctermbg=8 ctermfg=NONE cterm=bold,underline
+highlight CurSearch ctermbg=8 ctermfg=NONE cterm=underline
+highlight IncSearch ctermbg=8 ctermfg=NONE cterm=underline
 
-highlight MatchParen ctermbg=0 ctermfg=11 cterm=bold
+highlight MatchParen ctermbg=0 ctermfg=11 cterm=underline,bold
 highlight link QuickFixLine Search
 
 highlight LineNr ctermbg=NONE ctermfg=8 cterm=NONE
@@ -70,31 +83,30 @@ highlight StatusLineNC cterm=reverse
 
 highlight VertSplit ctermbg=NONE ctermfg=0
 
-highlight ColorColumn  ctermbg=0 
+highlight ColorColumn  ctermbg=0
 highlight CursorColumn ctermbg=0
 highlight FoldColumn   ctermbg=NONE ctermfg=9
 highlight SignColumn   ctermbg=NONE ctermfg=9
 
-highlight Pmenu         ctermbg=0 ctermfg=8
-highlight PmenuSel      ctermbg=8 ctermfg=15
-highlight PmenuExtra    ctermbg=0 ctermfg=4
-highlight PmenuExtraSel ctermbg=8 ctermfg=12
-highlight PmenuKind     ctermbg=0 ctermfg=4
-highlight PmenuKindSel  ctermbg=8 ctermfg=12
-highlight PmenuMatch    ctermbg=0 ctermfg=3  cterm=bold
-highlight PmenuMatchSel ctermbg=8 ctermfg=11 cterm=bold
-highlight PmenuSbar     ctermbg=0 ctermfg=0
-highlight PmenuThumb    ctermbg=0 ctermfg=0
+highlight Pmenu         ctermbg=0    ctermfg=NONE cterm=NONE
+highlight PmenuSel      ctermbg=NONE ctermfg=NONE cterm=reverse
+highlight PmenuExtra    ctermbg=0    ctermfg=8    cterm=NONE
+highlight PmenuExtraSel ctermbg=NONE ctermfg=NONE cterm=reverse
+highlight PmenuKind     ctermbg=0    ctermfg=8    cterm=NONE
+highlight PmenuKindSel  ctermbg=NONE ctermfg=NONE cterm=reverse
+highlight PmenuMatch    ctermbg=0    ctermfg=11   cterm=NONE
+highlight PmenuMatchSel ctermbg=NONE ctermfg=NONE cterm=reverse
+highlight PmenuSbar     ctermbg=0    ctermfg=NONE cterm=NONE
+highlight PmenuThumb    ctermbg=NONE ctermfg=NONE cterm=reverse
 # PmenuBorder
 # PmenuShadow
 
 # PopupSelected
 # PopupNotification
 
-# MessageWindow
-
 highlight ErrorMsg   ctermbg=NONE ctermfg=1 cterm=NONE
 highlight WarningMsg ctermbg=NONE ctermfg=3 cterm=NONE
+highlight link MessageWindow WarningMsg
 
 highlight Question ctermbg=NONE ctermfg=11 cterm=NONE
 highlight MoreMsg  ctermbg=NONE ctermfg=11 cterm=NONE
@@ -106,13 +118,13 @@ highlight WildMenu ctermbg=3    ctermfg=0    cterm=NONE
 highlight DiffAdd     ctermbg=NONE ctermfg=2  cterm=NONE
 highlight DiffChange  ctermbg=NONE ctermfg=3  cterm=NONE
 highlight DiffDelete  ctermbg=NONE ctermfg=1  cterm=NONE
-highlight DiffText    ctermbg=0    ctermfg=11 cterm=underline
-highlight DiffTextAdd ctermbg=0    ctermfg=10 cterm=underline
+highlight DiffText    ctermbg=0    ctermfg=11 cterm=undercurl
+highlight DiffTextAdd ctermbg=0    ctermfg=10 cterm=undercurl
 
-# SpellBad
-# SpellCap
-# SpellLocal
-# SpellRare
+highlight SpellBad   ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=1
+highlight SpellCap   ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=3
+highlight SpellLocal ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=4
+highlight SpellRare  ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=5
 
 highlight Conceal ctermbg=15 ctermfg=0 cterm=NONE
 highlight Folded  ctermbg=0  ctermfg=8 cterm=NONE

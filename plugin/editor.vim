@@ -50,7 +50,7 @@ set foldnestmax=10
 set foldcolumn=1
 
 set complete=.,w,b,u
-set completepopup=highlight:Pmenu
+set completepopup=highlight:Pmenu,border:off
 set completeopt=menuone,popup,fuzzy,noinsert,noselect
 set pumwidth=32
 set pumheight=8

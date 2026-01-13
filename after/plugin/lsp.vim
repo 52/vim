@@ -23,6 +23,7 @@ endif
 # See: https://github.com/yegappan/lsp/blob/main/doc/lsp.txt
 const OPTIONS: dict<any> = {
   autoComplete: false,
+  hoverInPreview: true,
 }
 
 # LSP server definition.
