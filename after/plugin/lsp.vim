@@ -43,6 +43,12 @@ const SERVERS = [
     args: [],
     syncInit: true
   },
+  {
+    name: 'ty',
+    filetype: ['python'],
+    path: 'ty',
+    args: ['server']
+  }
 ]->filter((_, s) => executable(s.path))
 
 # Registers the LSP servers with the yegappan/lsp plugin.
