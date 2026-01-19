@@ -42,8 +42,8 @@ execute 'autocmd VimLeave * ++once delete("' .. TMP .. '", "rf")'
 if isdirectory(ROOT)
   for path in glob(ROOT .. '/*', true, true)
     if isdirectory(path)
-      # Append root to runtimepath.
-      execute('set runtimepath+=' .. fnameescape(path))
+      # Prepend root to runtimepath.
+      execute('set runtimepath^=' .. fnameescape(path))
 
       # Append /after to runtimepath.
       var pafter = path .. '/after'
