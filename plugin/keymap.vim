@@ -28,5 +28,5 @@ nnoremap Q <nop>
 
 # Define the :Find command to access finder utilities.
 command! -nargs=1 -complete=customlist,find.Complete Find find.Run(<f-args>)
-nnoremap <leader>ff <cmd>Find files<CR>
-nnoremap <leader>fg <cmd>Find git_files<CR>
+nnoremap <leader>ff <cmd>Find files<cr>
+nnoremap <leader>fg <cmd>Find git_files<cr>

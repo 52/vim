@@ -55,3 +55,17 @@ const SERVERS = [
 # Note: Uses deep copies as the plugin modifies arguments in place.
 g:LspOptionsSet(deepcopy(OPTIONS))
 g:LspAddServer(deepcopy(SERVERS))
+
+augroup LspSetup
+  autocmd!
+  autocmd User LspAttached {
+    nnoremap <buffer> <leader>R <cmd>LspRename<cr>
+    nnoremap <buffer> <leader>H <cmd>LspHover<cr>
+    nnoremap <buffer> <leader>ds <cmd>LspDiagShow<cr>
+    nnoremap <buffer> <leader>dh <cmd>LspDiagHere<cr>
+    nnoremap <buffer> <leader>de <cmd>LspGotoDeclaration<cr>
+    nnoremap <buffer> <leader>df <cmd>LspGotoDefinition<cr>
+    nnoremap <buffer> <leader>sr <cmd>LspShowReferences<cr>
+    nnoremap <buffer> <leader>ss <cmd>LspShowSignature<cr>
+  }
+augroup END
