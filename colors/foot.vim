@@ -140,44 +140,44 @@ highlight SpecialKey  ctermbg=NONE ctermfg=1 cterm=bold
 if str2nr(&t_Co) == 256
   highlight Comment ctermfg=245
 
-  # Constant
-  # Boolean -> Constant
-  # Character -> Constant
-  # Float -> Constant
-  # String -> Constant
+  # highlight Constant
+  highlight link Boolean   Constant
+  highlight link Character Constant
+  highlight link Float     Constant
+  highlight link String    Constant
 
-  # Identifier
-  # Function -> Identifier
+  # highlight Identifier
+  highlight link Function Identifier
 
-  # Statement 
-  # Conditional -> Statement
-  # Exception -> Statement
-  # Keyword -> Statement
-  # Label -> Statement
-  # Operator -> Statement
-  # Repeat -> Statement
+  # highlight Statement
+  highlight link Conditional Statement
+  highlight link Exception   Statement
+  highlight link Keyword     Statement
+  highlight link Label       Statement
+  highlight link Operator    Statement
+  highlight link Repeat      Statement
 
-  # Type
-  # StorageClass -> Type
-  # Structure -> Type
-  # Typedef -> Type
+  # highlight Type
+  highlight link StorageClass Type
+  highlight link Structure    Type
+  highlight link Typedef      Type
 
-  # PreProc
-  # Define -> PreProc
-  # Include -> PreProc
-  # Precondit -> PreProc
-  # Macro -> PreProc
+  # highlight PreProc
+  highlight link Define    PreProc
+  highlight link Include   PreProc
+  highlight link Precondit PreProc
+  highlight link Macro     PreProc
 
-  # Special
-  # SpecialChar
-  # SpecialComment
-  # Delimiter
-  # Tag
-  # Debug
+  # highlight Special
+  highlight link SpecialChar    Special
+  highlight link SpecialComment Special
+  highlight link Debug          Special
+  highlight link Delimiter      Special
+  highlight link Tag            Special
 
   # Ignore
-  # Error
-  # Todo
+  highlight Error ctermbg=NONE ctermfg=9  cterm=undercurl
+  highlight Todo  ctermbg=NONE ctermfg=11 cterm=underline
 
   highlight Added   ctermbg=NONE ctermfg=2 cterm=NONE
   highlight Changed ctermbg=NONE ctermfg=3 cterm=NONE
@@ -189,4 +189,8 @@ if str2nr(&t_Co) == 256
   highlight diffIndexLine ctermbg=NONE ctermfg=NONE cterm=bold
   highlight diffLine      ctermbg=NONE ctermfg=6    cterm=NONE
   highlight diffSubname   ctermbg=NONE ctermfg=8    cterm=NONE
+
+  highlight netrwExe     cterm=bold
+  highlight netrwSymlink cterm=bold
+  highlight link netrwClassify Directory
 endif

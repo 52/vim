@@ -13,7 +13,3 @@
 [submodule "vendor/vim-lsp"]
 	path = vendor/vim-lsp
   url = https://github.com/yegappan/lsp.git
-
-[submodule "vendor/rust.vim"]
-	path = vendor/rust.vim
-	url = https://github.com/iron-e/rust.vim.git
