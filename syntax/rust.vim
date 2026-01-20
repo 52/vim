@@ -191,7 +191,7 @@ hi def link rustAsync           Constant
 hi def link rustAwait           Constant
 hi def link rustUnsafe          Constant
 hi def link rustExtern          Constant
-hi def link rustSelf            Identifier
+hi def link rustSelf            Type 
 hi def link rustSelfType        Type
 hi def link rustStorage         StorageClass
 hi def link rustBoolean         Boolean
