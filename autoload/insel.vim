@@ -51,8 +51,8 @@ vim9script
 # Ctrl-n    -> Move to next candidate.
 # Ctrl-p    -> Move to previous candidate.
 # Ctrl-f    -> Cycle through available filters.
+# Ctrl-c    -> Close the INSEL window.
 # Backspace -> Remove a character from the query.
-# Escape    -> Close the interface.
 #
 # Usage:
 #
@@ -114,7 +114,6 @@ const DEFAULT_ACTIONS: dict<ActionFn> = {
   "\<C-p>": (i: IInsel) => i.Prev(),
   "\<C-f>": (i: IInsel) => i.Cycle(),
   "\<BS>":  (i: IInsel) => i.Pop(),
-  "\<Esc>": (i: IInsel) => i.Close(),
 }
 
 # Implementation of the INSEL interface.
@@ -292,16 +291,22 @@ export class Insel implements IInsel
   enddef
 
   def __Loop(): void
-    while this.__running
-      var char = getcharstr()
-      var char_n = char2nr(char)
+    try
+      while this.__running
+        var char = getcharstr()
+        var char_n = char2nr(char)
 
-      if has_key(this.__actions, char)
-        this.__actions[char](this)
-      elseif char_n >= 32 && char_n < 127
-        this.__query ..= char
-        this.__Filter()
+        if has_key(this.__actions, char)
+          this.__actions[char](this)
+        elseif char_n >= 32 && char_n < 127
+          this.__query ..= char
+          this.__Filter()
+        endif
+      endwhile
+    finally
+      if this.__running
+        this.Close()
       endif
-    endwhile
+    endtry
   enddef
 endclass
