@@ -58,10 +58,15 @@ set pumheight=8
 set laststatus=2
 &statusline = ' %t %m%=%y '
 
+set shortmess+=I
+
 set splitright
 set splitbelow
 
+set mouse=a
 set scrolloff=20
+
+set autoread
 
 set backup
 set swapfile
@@ -76,10 +81,6 @@ set timeoutlen=500
 set diffopt+=iwhite
 set diffopt+=indent-heuristic
 set diffopt+=algorithm:histogram
-
-set autoread
-
-set shortmess+=I
 
 g:netrw_banner = 0
 g:netrw_mousemaps = 0
