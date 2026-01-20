@@ -28,18 +28,16 @@ endif
 g:colors_name = "foot"
 set background=dark
 
-if $TERM =~# 'foot'
-  &t_AU = "\e[58:5:%dm"
+&t_AU = "\e[58:5:%dm"
 
-  &t_Us = "\e[4:2m"
-  &t_Cs = "\e[4:3m"
-  &t_ds = "\e[4:4m"
-  &t_Ds = "\e[4:5m"
-  &t_Ce = "\e[4:0m"
+&t_Us = "\e[4:2m"
+&t_Cs = "\e[4:3m"
+&t_ds = "\e[4:4m"
+&t_Ds = "\e[4:5m"
+&t_Ce = "\e[4:0m"
 
-  &t_Ts = "\e[9m"
-  &t_Te = "\e[29m"
-endif
+&t_Ts = "\e[9m"
+&t_Te = "\e[29m"
 
 ############ USER-INTERFACE ############
 
@@ -121,10 +119,10 @@ highlight DiffDelete  ctermbg=NONE ctermfg=1  cterm=NONE
 highlight DiffText    ctermbg=0    ctermfg=11 cterm=undercurl
 highlight DiffTextAdd ctermbg=0    ctermfg=10 cterm=undercurl
 
-highlight SpellBad   ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=1
-highlight SpellCap   ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=3
-highlight SpellLocal ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=4
-highlight SpellRare  ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=5
+highlight SpellBad   ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=9
+highlight SpellCap   ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=11
+highlight SpellLocal ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=12
+highlight SpellRare  ctermbg=NONE ctermfg=NONE cterm=undercurl ctermul=13
 
 highlight Conceal ctermbg=15 ctermfg=0 cterm=NONE
 highlight Folded  ctermbg=0  ctermfg=8 cterm=NONE
