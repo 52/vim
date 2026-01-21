@@ -39,11 +39,8 @@ vim9script
 # other functions exposed through the interface definition.
 #
 # {
-#   "\<CR>": (i) => {
-#     const item = i.Item()
-#     i.Close()
-#     execute 'edit ' .. fnameescape(item)
-#   },
+#   "\<Tab>": (i) => i.Select()
+#   ...
 # }
 #
 # Default actions are defined in DEFAULT_ACTIONS:
@@ -57,19 +54,25 @@ vim9script
 # Usage:
 #
 # var i = insel.Insel.new(items, filters, actions)
-# i.Open()
+# var item = i.Open()
+#
+# if !empty(item)
+#   ...
+# endif
 
 # Defines the public interface for INSEL.
 # Methods added here are exposed to actions.
 export interface IInsel
   # Opens a new interactive session.
-  def Open(): void
+  def Open(): string
   # Closes the interactive session.
   def Close(): void
   # Move the cursor to the next candidate.
   def Next(): void
   # Move the cursor to the previous candidate.
   def Prev(): void
+  # Selects the current item.
+  def Select(): void
   # Rotate through the registered filter functions.
   def Cycle(): void
   # Remove the last character from the query.
@@ -114,6 +117,7 @@ const DEFAULT_ACTIONS: dict<ActionFn> = {
   "\<C-p>": (i: IInsel) => i.Prev(),
   "\<C-f>": (i: IInsel) => i.Cycle(),
   "\<BS>":  (i: IInsel) => i.Pop(),
+  "\<CR>":  (i: IInsel) => i.Select(),
 }
 
 # Implementation of the INSEL interface.
@@ -125,6 +129,7 @@ export class Insel implements IInsel
   var __actions: dict<ActionFn>
 
   var __query: string
+  var __result: string
   var __matches: list<string>
 
   var __offset: number
@@ -151,6 +156,7 @@ export class Insel implements IInsel
     this.__actions = extendnew(DEFAULT_ACTIONS, actions)
 
     this.__query = ''
+    this.__result = ''
     this.__matches = []
 
     this.__offset = 0
@@ -175,7 +181,7 @@ export class Insel implements IInsel
     this.__running = false
   enddef
 
-  def Open(): void
+  def Open(): string
     this.__origin = win_getid()
     this.__bufnr = bufadd('')
 
@@ -193,6 +199,8 @@ export class Insel implements IInsel
     this.__running = true
     this.__Filter()
     this.__Loop()
+
+    return this.__result
   enddef
 
   def Close(): void
@@ -231,6 +239,11 @@ export class Insel implements IInsel
 
       this.__Draw()
     endif
+  enddef
+
+  def Select(): void
+    this.__result = this.Item()
+    this.Close()
   enddef
 
   def Cycle(): void

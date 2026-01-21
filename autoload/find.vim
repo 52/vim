@@ -31,18 +31,12 @@ export def Files(): void
     items = glob('**/*', false, true)
   endif
 
-  var i = insel.Insel.new(items, {}, {
-    "\<CR>": (i) => {
-      const item = i.Item()
-      i.Close()
+  var i = insel.Insel.new(items)
+  var item = i.Open()
 
-      if !empty(item)
-        execute('edit ' .. fnameescape(item))
-      endif
-      }
-  })
-
-  i.Open()
+  if !empty(item)
+    execute('edit ' .. fnameescape(item))
+  endif
 enddef
 
 # Interactive file finder using INSEL (git-aware).
@@ -56,18 +50,12 @@ export def GFiles(): void
     items = systemlist('fd -tf -H -E .git 2>/dev/null')
   endif
 
-  var i = insel.Insel.new(items, {}, {
-    "\<CR>": (i) => {
-      const item = i.Item()
-      i.Close()
+  var i = insel.Insel.new(items)
+  var item = i.Open()
 
-      if !empty(item)
-        execute('edit ' .. fnameescape(item))
-      endif
-      }
-  })
-
-  i.Open()
+  if !empty(item)
+    execute('edit ' .. fnameescape(item))
+  endif
 enddef
 
 # Dictionary mapping command identifiers to their implementation.
