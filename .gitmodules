@@ -13,3 +13,7 @@
 [submodule "vendor/vim-lsp"]
 	path = vendor/vim-lsp
   url = https://github.com/yegappan/lsp.git
+
+[submodule "vendor/vim-commentary"]
+	path = vendor/vim-commentary
+	url = https://github.com/tpope/vim-commentary
