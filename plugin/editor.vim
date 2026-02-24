@@ -92,4 +92,17 @@ if has('clipboard')
   if has('unnamedplus')
     set clipboard+=unnamedplus
   endif
+
+  # Enable OSC52 clipboard in SSH sessions.
+  # See: https://github.com/vim/vim/issues/14995
+  if !empty($SSH_CLIENT)
+    g:osc52_force_avail = true
+    g:osc52_disable_paste = true
+
+    silent! packadd osc52
+
+    if exists('+clipmethod')
+      set clipmethod^=osc52
+    endif
+  endif
 endif
