@@ -44,6 +44,12 @@ const SERVERS = [
     syncInit: true
   },
   {
+    name: 'typescript-language-server',
+    filetype: ['javascript', 'typescript'],
+    path: 'typescript-language-server',
+    args: ['--stdio']
+  },
+  {
     name: 'ty',
     filetype: ['python'],
     path: 'ty',
