@@ -24,7 +24,7 @@
         ## The Vim version.
         ##
         #@ String
-        version = "9.1.2050";
+        version = "9.2.0851";
 
         ## The Vim source.
         ##
@@ -33,7 +33,7 @@
           owner = "vim";
           repo = "vim";
           rev = "v${version}";
-          hash = "sha256-d/fiDTvC1pAIvzs8kdO4tC7gQJz13feLPXFiUxXdoG0=";
+          hash = "sha256-48rdkjYTJMf3Fux/b3DSDiQRVJC/DMtgZLNzqJwIbdo=";
         };
 
         ## The Vim package.
