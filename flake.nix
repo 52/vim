@@ -2,7 +2,7 @@
   description = "A modern, minimal(ish) Vim distribution";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -24,7 +24,7 @@
         ## The Vim version.
         ##
         #@ String
-        version = "9.2.0851";
+        version = "9.2.1160";
 
         ## The Vim source.
         ##
@@ -33,7 +33,7 @@
           owner = "vim";
           repo = "vim";
           rev = "v${version}";
-          hash = "sha256-48rdkjYTJMf3Fux/b3DSDiQRVJC/DMtgZLNzqJwIbdo=";
+          hash = "sha256-y4CFI+msLXu32wjHnSHWKyJxr7b+gFV5daKChILC9zY=";
         };
 
         ## The Vim package.
