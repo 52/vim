@@ -54,6 +54,12 @@ const SERVERS = [
     filetype: ['python'],
     path: 'ty',
     args: ['server']
+  },
+  {
+    name: 'lean',
+    filetype: ['lean'],
+    path: 'lake',
+    args: ['serve']
   }
 ]->filter((_, s) => executable(s.path))
 
